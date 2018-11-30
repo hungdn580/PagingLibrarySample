@@ -36,8 +36,11 @@ public class NotificationDataSource extends PageKeyedDataSource<Long, Notificati
       @Override
       public void onResponse(Call<ResponseDTO<List<NotificationDTO>>> call, Response<ResponseDTO<List<NotificationDTO>>> response) {
         if (response.isSuccessful()) {
-          callback.onResult(response.body().getData(), null, FIRST_PAGE + 1);
-          loadCount += response.body().getData().size();
+          if (response.body() != null && response.body().getData() != null) {
+            callback.onResult(response.body().getData(), null, FIRST_PAGE + 1);
+            loadCount += response.body().getData().size();
+          }
+
         }
       }
 
@@ -56,7 +59,7 @@ public class NotificationDataSource extends PageKeyedDataSource<Long, Notificati
       public void onResponse(Call<ResponseDTO<List<NotificationDTO>>> call, Response<ResponseDTO<List<NotificationDTO>>> response) {
         if(response.isSuccessful()) {
           Long adjacentKey = (params.key > 1) ? params.key - 1 : null;
-          if (response.body() != null) {
+          if (response.body() != null && response.body().getData() != null) {
             callback.onResult(response.body().getData(), adjacentKey);
             loadCount += response.body().getData().size();
           }
@@ -81,11 +84,13 @@ public class NotificationDataSource extends PageKeyedDataSource<Long, Notificati
       @Override
       public void onResponse(Call<ResponseDTO<List<NotificationDTO>>> call, Response<ResponseDTO<List<NotificationDTO>>> response) {
         if(response.isSuccessful()) {
-          Long nextKey;
-          if (loadCount <= (response.body() != null ? response.body().getCount() : 0)) nextKey = params.key + 1;
-          else nextKey = null;
-          callback.onResult(response.body().getData(), nextKey);
-
+          if (response.body() != null && response.body().getData() != null) {
+            Long nextKey;
+            if (loadCount <= (response.body() != null ? response.body().getCount() : 0)) nextKey = params.key + 1;
+            else nextKey = null;
+            callback.onResult(response.body().getData(), nextKey);
+            loadCount += response.body().getData().size();
+          }
         }
       }
 

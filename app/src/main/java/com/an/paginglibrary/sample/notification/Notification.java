@@ -2,6 +2,7 @@ package com.an.paginglibrary.sample.notification;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -36,7 +37,8 @@ public class Notification {
   @SerializedName("content")
   private String mContent;
 
-  @ColumnInfo(name = "addition")
+//  @ColumnInfo(name = "addition")
+  @Ignore
   @SerializedName("addition")
   private JSONObject mAddition;
 
