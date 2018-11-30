@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PagingLibrary-Sample</string>
+
+    <string name="btn_like">Like</string>
+    <string name="btn_comment">Comment</string>
+    <string name="btn_share">Share</string>
+    <string name="item_title" formatted="false">%s posted %s</string>
+    <string name="item_date" formatted="false">%s at %s</string>
+    <string name="item_likes" formatted="false">%s Likes</string>
+    <string name="author_name" formatted="false">Anonymous</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+</resources>
